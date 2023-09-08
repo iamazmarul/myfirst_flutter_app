@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,8 +8,8 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "My First App",
-      debugShowCheckedModeBanner: false,
+      title: "Live Test Module 5",
+      debugShowCheckedModeBanner: true,
       home: homePage(),
     );
   }
@@ -21,7 +20,7 @@ class homePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(
+      appBar: AppBar(
         title: Text('Johnny'), // App title in the center
         actions: <Widget>[
           // Icons aligned to the right
@@ -39,17 +38,17 @@ class homePage extends StatelessWidget{
           ),
         ],
       ),
-  //     body: Column(
-  //       children: [
-  //         Text(
-  // "Home Page",
-  //           style: TextStyle(
-  //             color: Colors.cyan,
-  //             fontSize: 18,
-  //           ),
-  //         ),
-  //       ],
-  //     ),
+      //     body: Column(
+      //       children: [
+      //         Text(
+      // "Home Page",
+      //           style: TextStyle(
+      //             color: Colors.cyan,
+      //             fontSize: 18,
+      //           ),
+      //         ),
+      //       ],
+      //     ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
@@ -77,11 +76,11 @@ class homePage extends StatelessWidget{
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text("John Doe"),
-              accountEmail: Text("johndoe@example.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1336424559189270528/hs4a6Zit_400x400.jpg"),
-              )
+                accountName: Text("John Doe"),
+                accountEmail: Text("johndoe@example.com"),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1336424559189270528/hs4a6Zit_400x400.jpg"),
+                )
             ),
             ListTile(
               leading: Icon(Icons.home),
@@ -97,16 +96,16 @@ class homePage extends StatelessWidget{
                 // Handle settings button tap
               },
             ),
-      ],
-    ),
-    ),
+          ],
+        ),
+      ),
       endDrawer: Drawer(
         child: ListView(
           padding: EdgeInsets.all(0),
           children: [
             UserAccountsDrawerHeader(
-                accountName: Text("Azmarul Islam Johnny"),
-                accountEmail: Text("info@iamazmarul.com"),
+              accountName: Text("Azmarul Islam Johnny"),
+              accountEmail: Text("info@iamazmarul.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1336424559189270528/hs4a6Zit_400x400.jpg"),
               ),
