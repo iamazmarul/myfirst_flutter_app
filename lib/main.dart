@@ -39,7 +39,8 @@ class homePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("This Is Mod 5 Assignment", style: TextStyle(
+            Text("This Is Mod 5 Assignment",
+              style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),),
