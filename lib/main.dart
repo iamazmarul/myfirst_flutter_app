@@ -1,123 +1,104 @@
-
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+void main(){
+  runApp(Myapp());
 }
 
-class MyApp extends StatelessWidget{
+class Myapp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Assignment Module 5 ",
-      debugShowCheckedModeBanner: true,
-      home: homePage(),
-    );
+ return MaterialApp(
+   home: HomeScreen(),
+   title: "Mod 6 App",
+ );
   }
 }
 
-class homePage extends StatelessWidget{
+class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
-        backgroundColor: Colors.cyan,
-        centerTitle: true,
       ),
-      drawer: Drawer(
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                textStyle: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w500
-                ),
-                padding: EdgeInsets.all(20),
-              ),
-              onLongPress: (){
-                print("Azmarul");
-              } ,
-              onPressed: (){
-                print("johnny");
-              }, child: Text("Send Email"),),
-            IconButton(
-              style: IconButton.styleFrom(
-                iconSize: 20,
-                padding: EdgeInsets.all(20),
-                backgroundColor: Colors.green,
-              ),
-              onPressed: (){}, icon: Icon(Icons.settings),),
-            TextButton(onPressed: (){}, child: Text("Text Button")),
-            OutlinedButton(onPressed: (){}, child: Text("Outline Button")),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: TextField(
-            style: TextStyle(
-              color: Colors.black,
-            ),
-               decoration: InputDecoration(
-                 // fillColor: Colors.cyan,
-                 // filled: true,
-                 hintText: "john@domain.com",
-                 hintStyle: TextStyle(
-                   color: Colors.black45,
-                 ),
-                 suffixIcon: Icon(Icons.email_outlined, color: Colors.red),
-                 // prefixIcon: Icon(Icons.email_outlined, color: Colors.white),
-                 label: Text("Email"),
-                 border: OutlineInputBorder(),
-                 enabledBorder: OutlineInputBorder(
-                   borderSide: BorderSide (color: Colors.purple),
-                 ),
-               ),
-             ),
-           ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                obscureText: true,
-                controller: TextEditingController(),
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-                decoration: InputDecoration(
-                  // fillColor: Colors.cyan,
-                  // filled: true,
-                  hintText: "Enter Your Password",
-                  hintStyle: TextStyle(
-                    color: Colors.black45,
-                  ),
-                  suffixIcon: Icon(Icons.remove_red_eye, color: Colors.red),
-                  // prefixIcon: Icon(Icons.email_outlined, color: Colors.white),
-                  label: Text("Password"),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide (color: Colors.purple),
-                  ),
-                  disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green)
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: ElevatedButton(
-                  onPressed: (){}, child: Text("Login")),
-            ),
-          ],
-        ),
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       GestureDetector(
+      //         onTap: (){
+      //           print("Johnny");
+      //         },
+      //         onLongPress: (){},
+      //         child: Text("Hello Johnny"),
+      //       ),
+      //       InkWell(
+      //         onTap: (){
+      //           print("Johnny");
+      //         },
+      //         onLongPress: (){},
+      //         child: Text("Hello Johnny"),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // body: ListView(
+      //   // scrollDirection: Axis.horizontal,
+      //   scrollDirection: Axis.vertical,
+      //   children: [
+      //     Text("Johnny"),
+      //     Text("Johnny"),
+      //     Text("Johnny"),
+      //     Text("Johnny"),
+      //   ],
+      // ),
+      // body: Scrollbar( /// Scrollbar For Add Scroll in Column and Row
+      //   radius: Radius.circular(10),
+      //   thickness: 30,
+      //   child: SingleChildScrollView( /// SingleChildScrollView For column/ROw scroll option add
+      //   child: Column(
+      //     children: [
+      //       Text("Johnny"),
+      //       Text("Johnny"),
+      //     ],
+      //   ),
+      //   ),
+      // ),
+      // body: Scrollbar(
+      //   child: ListView(
+      //     children: [
+      //       ListTile(
+      //         title: Text("User Name"),
+      //         subtitle: Text("info@iamazmarul.com"),
+      //         leading: Icon(Icons.ice_skating),
+      //         trailing: Icon(Icons.ice_skating),
+      //       ),
+      //       Divider(
+      //         height: 10,
+      //         thickness: 1,
+      //         color: Colors.indigoAccent,
+      //         endIndent: 15,
+      //         indent: 15,
+      //       ),
+      //       ListTile(
+      //         title: Text("User Name"),
+      //         subtitle: Text("info@iamazmarul.com"),
+      //         leading: Icon(Icons.ice_skating),
+      //         trailing: Icon(Icons.ice_skating),
+      //       ),
+      //       Text("Johnny"),
+      //     ],
+      //   ),
+      // ),
+      body: GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        children: [
+          Icon(Icons.confirmation_number_sharp),
+          Icon(Icons.confirmation_number_sharp),
+          Icon(Icons.confirmation_number_sharp),
+          Icon(Icons.confirmation_number_sharp),
+        ],
       ),
     );
   }
-
 }
