@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Myapp());
+  runApp(MyApp());
 }
 
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Directory App",
+      title: "My Shopping List",
       home: homePage(),
     );
   }
 }
-
 
 class homePage extends StatelessWidget {
   const homePage({super.key});
@@ -23,18 +22,43 @@ class homePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Branch"),
-        backgroundColor: Colors.green,
+        title: Text("My Shopping List"),
+        centerTitle: true,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 10),
             child: Icon(
-              Icons.search_outlined,
+              Icons.shopping_cart,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: Icon(Icons.more_vert),
+        ],
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: Icon(Icons.shopping_cart_rounded),
+            title: Text("Apples"),
+            onTap: (){},
+          ),
+          ListTile(
+            leading: Icon(Icons.free_breakfast),
+            title: Text("Bananas"),
+            onTap: (){},
+          ),
+          ListTile(
+            leading: Icon(Icons.breakfast_dining),
+            title: Text("Bread"),
+            onTap: (){},
+          ),
+          ListTile(
+            leading: Icon(Icons.coffee),
+            title: Text("Milk"),
+            onTap: (){},
+          ),
+          ListTile(
+            leading: Icon(Icons.egg),
+            title: Text("Eggs"),
+            onTap: (){},
           ),
         ],
       ),
