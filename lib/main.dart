@@ -48,7 +48,7 @@ class homePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12),
               child: Text(
                 "Welcome to My Photo Gallery!",
                 style: TextStyle(
