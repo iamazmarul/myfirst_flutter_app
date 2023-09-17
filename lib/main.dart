@@ -85,18 +85,13 @@ class homePage extends StatelessWidget {
                         MySnackbar("Photo $index", context);
                       },
                       child: Padding(
-                          padding: EdgeInsets.all(
-                              20), // Adjust the padding as needed
+                          padding: EdgeInsets.all(20),
                           child: Column(
                             children: [
-                              Image.network(
-                                dogsImages,
-                                height: 90,
-                              ),
+                              Image.network(dogsImages, height: 90),
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
-                                child: Text(
-                                  "Photos $index",
+                                child: Text("Photos $index",
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ),
