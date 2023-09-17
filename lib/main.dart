@@ -19,7 +19,7 @@ class Myapp extends StatelessWidget {
 class homePage extends StatelessWidget {
   homePage({super.key});
 
-  List<String> dogsImage = [
+  final List dogsImage = [
     "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
     "https://hips.hearstapps.com/hmg-prod/images/best-guard-dogs-1650302456.jpeg",
     "https://images.pexels.com/photos/257519/pexels-photo-257519.jpeg",
@@ -27,6 +27,14 @@ class homePage extends StatelessWidget {
     "https://images.pexels.com/photos/257519/pexels-photo-257519.jpeg",
     "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
   ];
+
+  MySnackbar(message, context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +81,9 @@ class homePage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final dogsImages = dogsImage[index];
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        MySnackbar("Photo $index", context);
+                      },
                       child: Padding(
                           padding: EdgeInsets.all(
                               20), // Adjust the padding as needed
@@ -152,27 +162,28 @@ class homePage extends StatelessWidget {
                 ),
               ],
             ),
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: 50, // Width of the circular background
-            height: 50, // Height of the circular background
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.blue, // Background color of the circle
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 50, // Width of the circular background
+                  height: 50, // Height of the circular background
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue, // Background color of the circle
+                  ),
+                  child: Center(
+                    child: IconButton(
+                      icon: Icon(Icons.cloud_upload,
+                          size: 20, color: Colors.white), // Upload icon
+                      onPressed: () {
+                        MySnackbar("Photos Uploaded Successfully!", context);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-            child: Center(
-              child: IconButton(
-                icon: Icon(Icons.cloud_upload, size: 20, color: Colors.white), // Upload icon
-                onPressed: () {
-
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
           ],
         ),
       ),
