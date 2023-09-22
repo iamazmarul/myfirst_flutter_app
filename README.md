@@ -1,16 +1,11 @@
-# myfirst_flutter_app
+# Assignment Module 7
 
-My First Flutter App
+Assignment Module 7
 
-## Getting Started
+## Screen Short
 
-This project is a starting point for a Flutter application.
+![m 7](https://github.com/iamazmarul/myfirst_flutter_app/assets/55909678/32a4cb10-667b-47aa-81ff-75923e46ed83)
+![m 7 2](https://github.com/iamazmarul/myfirst_flutter_app/assets/55909678/c01bb09c-f2b4-4619-9202-3ffa748d31db)
+![m 7 3](https://github.com/iamazmarul/myfirst_flutter_app/assets/55909678/f821e31b-2745-4e30-aa16-dbc7fdb040cd)
+![m 7 4](https://github.com/iamazmarul/myfirst_flutter_app/assets/55909678/3e0623cb-9de2-491f-b46d-868a720c49fb)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
