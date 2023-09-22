@@ -138,9 +138,10 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     int totalItemCount = 0;
-for(int i in widget.totalItems){
-  totalItemCount += i;
-};
+    for (int i in widget.totalItems) {
+      totalItemCount += i;
+    }
+    ;
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
