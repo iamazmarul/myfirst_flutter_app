@@ -38,6 +38,28 @@ class _HomeScreenState extends State<HomeScreen> {
     {"name": "products 10", "price": "780"},
   ];
 
+  void _showSuccessDialog(String cartItem, String productName) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Congratulations!'),
+          content: Text("You've bought $cartItem $productName "),
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Navigator.of(context).pop();
+                Navigator.pop(context);
+              },
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 final product = products[index];
                 while (counters.length <= index) {
-                  counters.add(0);
+                  counters.add(0); // Ensure counters list has enough elements
                 }
                 final counter = counters[index];
 
@@ -68,15 +90,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text("Counter: $counter"),
                       ElevatedButton(
                         onPressed: () {
-                          if (counter < 5) {
+                          if (counter < 5){
                             counters[index]++;
                             setState(() {});
                           };
                           if (counter == 5) {
-                            AlertDialog(
-
-                            );
-                          };
+                            _showSuccessDialog(counter.toString(), product["name"]!);
+                          }
                         },
                         child: Text("Buy Now"),
                       ),
@@ -90,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen(cartproducts: $counter)),);
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen(Itemcounters: counters)),);
         },
         child: Icon(Icons.add_shopping_cart),
       ),
@@ -99,8 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class CartScreen extends StatefulWidget {
-  final String cartproducts;
-  const CartScreen({super.key, required this.cartproducts});
+  final List<int> Itemcounters;
+  const CartScreen({super.key, required this.Itemcounters});
 
   @override
   State<CartScreen> createState() => _CartScreenState();
@@ -109,6 +129,12 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    // int totalCount = widget.Itemcounters.fold(0, (sum, counter) => sum + counter);
+    int totalCount = 0;
+    for (int i in widget.Itemcounters){
+      totalCount += i;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Cart"),
@@ -116,7 +142,7 @@ class _CartScreenState extends State<CartScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Total Products")],
+          children: [Text("Total Products: $totalCount")],
         ),
       ),
     );
