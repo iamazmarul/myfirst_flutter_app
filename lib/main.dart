@@ -43,10 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 border: Border.all(width: 2, color: Colors.cyan),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ListView.separated(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.separated(
                         shrinkWrap: true,
                         itemCount: 10,
                         itemBuilder: (context, index) {
@@ -68,8 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Divider();
                       },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Padding(
@@ -90,33 +90,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       size: 50,
                     ),
                     Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            ListView.separated(
-                                shrinkWrap: true,
-                                itemCount: 10,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    leading: Icon(
-                                      Icons.warehouse_rounded,
-                                      size: 28,
-                                    ),
-                                    title: Text(
-                                      "Md Azmarul Islam",
-                                      style: TextStyle(
-                                          fontSize: 18, fontWeight: FontWeight.bold),
-                                    ),
-                                    subtitle: Text("Flutter Developer"),
-                                    trailing: Icon(Icons.verified),
-                                  );
-                                },
-                              separatorBuilder: (context, index){
-                                  return Divider();
-                              }
-                            ),
-                          ],
-                        ),
+                      child: ListView.separated(
+                          shrinkWrap: true,
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              leading: Icon(
+                                Icons.warehouse_rounded,
+                                size: 28,
+                              ),
+                              title: Text(
+                                "Md Azmarul Islam",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text("Flutter Developer"),
+                              trailing: Icon(Icons.verified),
+                            );
+                          },
+                        separatorBuilder: (context, index){
+                            return Divider();
+                        }
                       ),
                     ),
                   ],
