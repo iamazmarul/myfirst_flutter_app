@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Test",
-      debugShowCheckedModeBanner: false,
+      title: "Live Text Module 7",
+      debugShowCheckedModeBanner: true,
       home: HomeScreen(),
     );
   }
@@ -26,97 +25,86 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int counter = 0;
+
+  void _dialogBox(String itemCount) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Button pressed $itemCount times"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Close"))
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Practice Problem"),
+        title: Text("Counter App"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 8, bottom: 8, left: 25, right: 25),
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 300,
-              width: 500,
-              decoration: BoxDecoration(
-                border: Border.all(width: 2, color: Colors.cyan),
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                        shrinkWrap: true,
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            leading: Icon(
-                              Icons.warehouse_rounded,
-                              size: 28,
-                            ),
-                            title: Text(
-                              "Md Azmarul Islam",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            subtitle: Text("Flutter Developer"),
-                            trailing: Icon(Icons.verified),
-                          );
-                        },
-                      separatorBuilder: (context, index){
-                          return Divider();
-                      },
-                    ),
-                  ),
-                ],
+            Text(
+              "Count: ",
+              style: TextStyle(
+                fontSize: 20,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                height: 300,
-                width: 500,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: Colors.cyan),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Icon(
-                      Icons.person,
-                      size: 50,
-                    ),
-                    Expanded(
-                      child: ListView.separated(
-                          shrinkWrap: true,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              leading: Icon(
-                                Icons.warehouse_rounded,
-                                size: 28,
-                              ),
-                              title: Text(
-                                "Md Azmarul Islam",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              subtitle: Text("Flutter Developer"),
-                              trailing: Icon(Icons.verified),
-                            );
-                          },
-                        separatorBuilder: (context, index){
-                            return Divider();
-                        }
+            Text(
+              counter.toString(),
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      counter = counter + 1;
+                      setState(() {});
+
+                      if (counter == 5) {
+                        _dialogBox(counter.toString());
+                      }
+                    },
+                    child: Text(
+                      "+",
+                      style: TextStyle(
+                        fontSize: 25,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (counter > 0) {
+                        counter = counter - 1;
+                      }
+                      setState(() {});
+                    },
+                    child: Text(
+                      "-",
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
