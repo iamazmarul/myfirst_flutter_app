@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Profile'),
+        title: Text('Profile'),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -81,7 +81,7 @@ class PortraitLayout extends StatelessWidget {
 class LandscapeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -91,7 +91,7 @@ class LandscapeLayout extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter, // Align the CircleAvatar to the top
             child: CircleAvatar(
-              radius: screenWidth * 0.2,
+              radius: MediaQuery.sizeOf(context).height/2.7,
               backgroundImage: NetworkImage("https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg"),
             ),
           ),
