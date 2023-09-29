@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Assignment Module 8"
+      title: "Assignment Module 8",
       home: ProfileScreen(),
     );
   }
