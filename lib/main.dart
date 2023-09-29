@@ -69,7 +69,7 @@ class PortraitLayout extends StatelessWidget {
             itemCount: 6, // Number of images
             itemBuilder: (context, index) {
               return Image.network(
-                  "https://www.stuff.tv/wp-content/uploads/sites/2/2023/09/Apple-Watch-Ultra-2-vs-Watch-Ultra-lead.jpg?resize=1080,720",
+                  "https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg",
                   fit: BoxFit.cover);
             },
           ),
@@ -128,7 +128,7 @@ class LandscapeLayout extends StatelessWidget {
                   itemCount: 6,
                   itemBuilder: (context, index) {
                     return Image.network(
-                        "https://www.stuff.tv/wp-content/uploads/sites/2/2023/09/Apple-Watch-Ultra-2-vs-Watch-Ultra-lead.jpg?resize=1080,720",
+                        "https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg",
                         fit: BoxFit.cover);
                   },
                 ),
