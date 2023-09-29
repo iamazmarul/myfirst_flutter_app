@@ -24,7 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     final orientation = MediaQuery.of(context).orientation;
     final isPortrait = orientation == Orientation.portrait;
 
@@ -33,12 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("News Feed"),
       ),
       body: SingleChildScrollView(
-        child: isPortrait ?  PortraitLayout() : LandscapeLayout(),
+        child: isPortrait ? PortraitLayout() : LandscapeLayout(),
       ),
     );
   }
 }
-
 
 class PortraitLayout extends StatelessWidget {
   @override
@@ -54,13 +52,15 @@ class PortraitLayout extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 150, // This height might be too much for typical portrait layout
-                  alignment: Alignment.center,
-                  color: Colors.white70,
-                  child: Image.network(
-                    "https://via.placeholder.com/150", width: 150, height: 150,
-                  )
-                ),
+                    height:
+                        150, // This height might be too much for typical portrait layout
+                    alignment: Alignment.center,
+                    color: Colors.white70,
+                    child: Image.network(
+                      "https://via.placeholder.com/150",
+                      width: 150,
+                      height: 150,
+                    )),
               );
             },
           ),
@@ -69,7 +69,6 @@ class PortraitLayout extends StatelessWidget {
     );
   }
 }
-
 
 class LandscapeLayout extends StatelessWidget {
   @override
