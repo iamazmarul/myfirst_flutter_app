@@ -47,13 +47,13 @@ class PortraitLayout extends StatelessWidget {
           ListView.builder(
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 10, // Replace with your desired number of items
+            itemCount: 10, 
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                     height:
-                        150, // This height might be too much for typical portrait layout
+                        150, 
                     alignment: Alignment.center,
                     color: Colors.white70,
                     child: Image.network(
