@@ -25,9 +25,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: isPortrait
-              ? PortraitLayout()
-              : LandscapeLayout(),
+          child: isPortrait ? PortraitLayout() : LandscapeLayout(),
         ),
       ),
     );
@@ -38,14 +36,15 @@ class PortraitLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8,right: 8),
+      padding: const EdgeInsets.only(left: 8, right: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 20.0),
           CircleAvatar(
-            radius: MediaQuery.sizeOf(context).width/2,
-            backgroundImage: NetworkImage("https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg"), // Replace with your profile image
+            radius: MediaQuery.sizeOf(context).width / 2,
+            backgroundImage: NetworkImage(
+                "https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg"), // Replace with your profile image
           ),
           SizedBox(height: 20.0),
           Text(
@@ -69,7 +68,9 @@ class PortraitLayout extends StatelessWidget {
             ),
             itemCount: 6, // Number of images
             itemBuilder: (context, index) {
-              return Image.network("https://www.stuff.tv/wp-content/uploads/sites/2/2023/09/Apple-Watch-Ultra-2-vs-Watch-Ultra-lead.jpg?resize=1080,720", fit: BoxFit.cover);
+              return Image.network(
+                  "https://www.stuff.tv/wp-content/uploads/sites/2/2023/09/Apple-Watch-Ultra-2-vs-Watch-Ultra-lead.jpg?resize=1080,720",
+                  fit: BoxFit.cover);
             },
           ),
         ],
@@ -91,8 +92,9 @@ class LandscapeLayout extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter, // Align the CircleAvatar to the top
             child: CircleAvatar(
-              radius: MediaQuery.sizeOf(context).height/2.7,
-              backgroundImage: NetworkImage("https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg"),
+              radius: MediaQuery.sizeOf(context).height / 2.7,
+              backgroundImage: NetworkImage(
+                  "https://cdn.mos.cms.futurecdn.net/JxJ548FZEJo2SnDQqK6qK7.jpg"),
             ),
           ),
           SizedBox(width: 20),
@@ -125,7 +127,9 @@ class LandscapeLayout extends StatelessWidget {
                   ),
                   itemCount: 6,
                   itemBuilder: (context, index) {
-                    return Image.network("https://www.stuff.tv/wp-content/uploads/sites/2/2023/09/Apple-Watch-Ultra-2-vs-Watch-Ultra-lead.jpg?resize=1080,720", fit: BoxFit.cover);
+                    return Image.network(
+                        "https://www.stuff.tv/wp-content/uploads/sites/2/2023/09/Apple-Watch-Ultra-2-vs-Watch-Ultra-lead.jpg?resize=1080,720",
+                        fit: BoxFit.cover);
                   },
                 ),
               ],
