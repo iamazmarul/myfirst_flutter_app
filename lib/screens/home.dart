@@ -26,13 +26,13 @@ class _HomeState extends State<Home> {
       onPressed: () {
         showSnackbar(size);
       },
-      child: Text(size, style: TextStyle(
+      child: Text(size, style: const TextStyle(
         fontSize: 18,
       ),),
       style: ElevatedButton.styleFrom(
         elevation: 0,
         padding: EdgeInsets.zero,
-        minimumSize: Size(90, 45),
+        minimumSize: const Size(90, 45),
         backgroundColor: selectedSize == size ? Colors.orange : Colors.black38,
       ),
     );
@@ -55,11 +55,11 @@ class _HomeState extends State<Home> {
             colorButton("L"),
             colorButton("XL"),
             Container(
-              padding: EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.only(top: 8),
               child: colorButton("XXL"),
             ),
             Container(
-              padding: EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.only(top: 8),
               child: colorButton("XXXL"),
             ),
           ],
