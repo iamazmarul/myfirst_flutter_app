@@ -9,59 +9,103 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<int> cartItems = [];
+  double totalPrice = 0.0;
 
   List<Map<String, String>> products = [
     {
-      "Name": "Products 1",
-      "Price": "10",
+      "Name": "T-Shirt",
+      "Price": "33",
       "Color": "Black",
       "Size": "L",
       "Image":
-          "https://images.pexels.com/photos/440320/pexels-photo-440320.jpeg?cs=srgb&dl=pexels-vedant-sharma-440320.jpg"
+          "https://media.istockphoto.com/id/1125110782/photo/young-man-isolated-on-gray-textured-wall-smiling-while-pointing-with-index-finger-to-black-t.jpg?s=1024x1024&w=is&k=20&c=34_6_kAqQoLeue146VpaFAfJqbh9ZT7zda0NESBPUgk=&p=1"
     },
     {
-      "Name": "Products 2",
-      "Price": "20",
+      "Name": "Jeans",
+      "Price": "79",
       "Color": "Blue",
       "Size": "M",
       "Image":
-          "https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?cs=srgb&dl=pexels-pixabay-51383.jpg"
+          "https://media.istockphoto.com/id/527236518/photo/mans-legs.jpg?s=1024x1024&w=is&k=20&c=048I3alxFMmacC6VW6af2_PF9SE_ELXjHeuZqYWChN8=&p=1"
     },
     {
-      "Name": "Products 3",
-      "Price": "33",
+      "Name": "Shoes",
+      "Price": "100",
       "Color": "Yellow",
       "Size": "XL",
       "Image":
-          "https://images.pexels.com/photos/3999538/pexels-photo-3999538.jpeg?cs=srgb&dl=pexels-gantas-vai%C4%8Diul%C4%97nas-3999538.jpg"
-    },
-    {
-      "Name": "Products 4",
-      "Price": "48",
-      "Color": "Green",
-      "Size": "XXL",
-      "Image":
-          "https://images.pexels.com/photos/440320/pexels-photo-440320.jpeg?cs=srgb&dl=pexels-vedant-sharma-440320.jpg"
+          "https://media.istockphoto.com/id/171224469/photo/canvas-shoes.jpg?s=1024x1024&w=is&k=20&c=6xY77QMkIoDSgDcWvt-5u6Et40tmB6d6dST6VrksT2U=&p=1"
     },
   ];
 
   @override
   void initState() {
     super.initState();
-    cartItems = List<int>.generate(products.length, (index) => 0);
+    cartItems = List<int>.generate(products.length, (index) => 1);
+    totalPrice = 0.0;
+    for (int index = 0; index < cartItems.length; index++) {
+      totalPrice += double.parse(products[index]["Price"] ?? "0") * cartItems[index];
+    }
   }
 
+  ElevatedButton buildAddToCartButton(int index) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          cartItems[index]++;
+          totalPrice += double.parse(products[index]["Price"] ?? "0");
+        });
+      },
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        backgroundColor: Colors.white,
+        padding: const EdgeInsets.all(8),
+        shape: const CircleBorder(),
+      ),
+      child: const Icon(
+        Icons.add,
+        size: 20,
+        color: Colors.black54,
+      ),
+    );
+  }
+
+  ElevatedButton buildRemoveFromCartButton(int index) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          if (cartItems[index] > 1) {
+            cartItems[index]--;
+            totalPrice -= double.parse(products[index]["Price"] ?? "0");
+          }
+        });
+      },
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        backgroundColor: Colors.white,
+        padding: const EdgeInsets.all(8),
+        shape: const CircleBorder(),
+      ),
+      child: const Icon(
+        Icons.remove,
+        size: 20,
+        color: Colors.black54,
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color(0xFAFAFAFA),
+        backgroundColor: const Color(0xFAFAFAFA),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.search,
                 color: Colors.black,
               ),
@@ -71,6 +115,20 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [
+          const Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "My Bag",
+                  style: TextStyle(
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: products.length,
@@ -80,10 +138,9 @@ class _HomeState extends State<Home> {
                   child: Card(
                     child: Row(
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.width / 5,
-                          width: MediaQuery.of(context).size.width / 5,
-                          color: Colors.deepOrange,
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width / 3.5,
+                          width: MediaQuery.of(context).size.width / 3.5,
                           child: Image.network(
                             products[index]["Image"] ?? "",
                             fit: BoxFit.cover,
@@ -102,12 +159,15 @@ class _HomeState extends State<Home> {
                                   children: [
                                     Text(
                                       products[index]["Name"] ?? "",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    Icon(Icons.more_vert),
+                                    const Icon(
+                                      Icons.more_vert,
+                                      color: Colors.black45,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -117,17 +177,37 @@ class _HomeState extends State<Home> {
                                   children: [
                                     Row(
                                       children: [
+                                        const Text(
+                                          "Color: ",
+                                          style: TextStyle(
+                                            color: Colors.black45,
+                                          ),
+                                        ),
                                         Text(
-                                            "Color: ${products[index]["Color"] ?? ""} "),
+                                          products[index]["Color"] ?? "",
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Row(
                                       children: [
+                                        const Text(
+                                          "Size: ",
+                                          style: TextStyle(
+                                            color: Colors.black45,
+                                          ),
+                                        ),
                                         Text(
-                                            "Size: ${products[index]["Size"] ?? ""}"),
+                                          products[index]["Size"] ?? "",
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -138,62 +218,23 @@ class _HomeState extends State<Home> {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      flex: 3, // Adjust the flex values as needed
+                                      flex: 3,
                                       child: Row(
                                         children: [
-                                          // First Row on the left side
                                           Row(
                                             children: [
-                                              Container(
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      if (cartItems[index] > 0) {
-                                                        cartItems[index]--;
-                                                      }
-                                                    });
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                    elevation: 5,
-                                                    backgroundColor: Colors.white,
-                                                    padding: EdgeInsets.all(13),
-                                                    shape: CircleBorder(),
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.remove,
-                                                    size: 22,
-                                                    color: Colors.black54,
-                                                  ),
-                                                ),
-                                              )
+                                              buildRemoveFromCartButton(index),
                                             ],
                                           ),
-                                          // Second Row on the left side
-                                          Row(
-                                            children: [Text("${cartItems[index]}")],
+                                          Builder(
+                                            builder: (context) {
+                                              return Text(
+                                                  "${cartItems[index]}");
+                                            },
                                           ),
                                           Row(
                                             children: [
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    cartItems[index]++;
-                                                  });
-                                                },
-                                                style: ElevatedButton.styleFrom(
-                                                  elevation: 5,
-                                                  backgroundColor:
-                                                  Colors.white, // Button color
-                                                  padding:
-                                                  EdgeInsets.all(13), // Button padding
-                                                  shape: CircleBorder(), // Make it circular
-                                                ),
-                                                child: Icon(
-                                                  Icons.add,
-                                                  size: 22,
-                                                  color: Colors.black54,
-                                                ),
-                                              ),
+                                              buildAddToCartButton(index),
                                             ],
                                           ),
                                         ],
@@ -201,9 +242,12 @@ class _HomeState extends State<Home> {
                                     ),
                                     Row(
                                       children: [
-                                        Text( "${products[index]["Price"] ?? ""}\$ ",style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),),
+                                        Text(
+                                          "${products[index]["Price"] ?? ""}\$ ",
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -221,14 +265,63 @@ class _HomeState extends State<Home> {
           ),
           Column(
             children: [
-              Container(
-                child: ElevatedButton(onPressed: (){}, child: Text("CHECK OUT"),
-                style: ElevatedButton.styleFrom(
-
-                ),),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 12, right: 12, bottom: 10, top: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Row(
+                      children: [
+                        Text(
+                          "Total Amount:",
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "${totalPrice.toStringAsFixed(0)}\$",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 12,
+                  right: 12,
+                  bottom: 8,
+                ),
+                child: SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                              'Congratulations! Your order has been placed.'),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFD50000),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                    child: const Text("CHECK OUT"),
+                  ),
+                ),
               )
             ],
-          )
+          ),
         ],
       ),
     );
