@@ -44,7 +44,8 @@ class _HomeState extends State<Home> {
     cartItems = List<int>.generate(products.length, (index) => 1);
     totalPrice = 0.0;
     for (int index = 0; index < cartItems.length; index++) {
-      totalPrice += double.parse(products[index]["Price"] ?? "0") * cartItems[index];
+      totalPrice +=
+          double.parse(products[index]["Price"] ?? "0") * cartItems[index];
     }
   }
 
