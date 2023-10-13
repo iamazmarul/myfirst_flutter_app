@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class TodoList {
   String title;
   String description;
